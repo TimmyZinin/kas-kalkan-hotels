@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kaş & Kalkan Otelcileri için 10 AI Ürünü — Pazar Araştırması</title>
-<meta name="description" content="Kaş ve Kalkan'daki butik otel, pansiyon ve villa sahipleri için AI tabanlı 10 ürün fikri. Pazar verileri, 15 somut sorun, kaynaklı araştırma.">
-<meta property="og:title" content="Kaş & Kalkan Otelcileri için 10 AI Ürünü">
-<meta property="og:description" content="300+ butik otel, 800+ villa. 15 somut sorun. 10 AI ürün fikri. Türkçe araştırma.">
+<title>Kaş & Kalkan Otelcileri için 10 Küçük AI Aracı — v2</title>
+<meta name="description" content="Booking kalacak. Biz onu senin için daha iyi çalıştıracağız. Kaş ve Kalkan'daki otel sahipleri için küçük, elle tutulur, Booking ile çalışan 10 mikro-araç.">
+<meta property="og:title" content="Booking kalacak. Biz onu daha iyi çalıştıracağız.">
+<meta property="og:description" content="Kaş & Kalkan otelcileri için 10 küçük AI aracı. Büyük vaatler yok, elle tutulur kazanımlar.">
 <meta property="og:image" content="https://timzinin.com/kas-kalkan-hotels/images/hero.jpg">
 <meta property="og:url" content="https://timzinin.com/kas-kalkan-hotels/">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,7 +17,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 
 <style>
@@ -34,9 +33,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: auto; -webkit-font-smoothing: antialiased; }
-
 body {
   background: var(--bg);
   color: var(--ink);
@@ -47,7 +44,6 @@ body {
   cursor: none;
 }
 
-/* Grain overlay */
 body::before {
   content: '';
   position: fixed;
@@ -59,7 +55,6 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Custom cursor */
 .cursor {
   position: fixed;
   top: 0; left: 0;
@@ -76,14 +71,11 @@ body::before {
 @media (hover: none) { .cursor { display: none; } body { cursor: auto; } }
 
 h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; line-height: 1.02; }
-
 .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; letter-spacing: 0.04em; text-transform: uppercase; }
 
-/* Layout */
 .wrap { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
 section { position: relative; padding: clamp(80px, 12vw, 180px) 0; }
 
-/* Nav */
 nav.top {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -92,7 +84,7 @@ nav.top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: oklch(96% 0.015 85 / 0.8);
+  background: oklch(96% 0.015 85 / 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s;
@@ -100,8 +92,8 @@ nav.top {
 nav.top.scrolled { border-bottom-color: var(--line); }
 nav .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
 nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em; }
+nav .ver { display: inline-block; padding: 3px 8px; border: 1px solid var(--coral); color: var(--coral); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; margin-left: 10px; border-radius: 2px; }
 
-/* Hero */
 .hero {
   min-height: 100vh;
   padding-top: clamp(120px, 15vh, 180px);
@@ -118,12 +110,13 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   align-items: center;
   margin-bottom: clamp(40px, 6vw, 80px);
   color: var(--ink-soft);
+  flex-wrap: wrap;
 }
 .hero-label .dot { width: 8px; height: 8px; background: var(--coral); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 .hero h1 {
-  font-size: clamp(56px, 11vw, 180px);
+  font-size: clamp(48px, 9.5vw, 150px);
   font-weight: 300;
   font-style: italic;
   line-height: 0.95;
@@ -131,7 +124,6 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   margin-bottom: 0.3em;
 }
 .hero h1 .row { display: block; overflow: hidden; }
-.hero h1 .row span { display: inline-block; }
 .hero h1 em {
   font-family: 'Fraunces', serif;
   font-weight: 900;
@@ -139,9 +131,10 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   color: var(--coral);
   font-variation-settings: "opsz" 144;
 }
+.hero h1 s { text-decoration: line-through; text-decoration-color: var(--coral); text-decoration-thickness: 4px; font-style: italic; opacity: 0.5; }
 
 .hero-sub {
-  max-width: 720px;
+  max-width: 780px;
   font-size: clamp(17px, 1.6vw, 22px);
   color: var(--ink-soft);
   margin-top: clamp(30px, 4vw, 60px);
@@ -174,7 +167,7 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
 .hero-meta { display: flex; gap: clamp(30px, 5vw, 80px); flex-wrap: wrap; }
 .hero-meta div { display: flex; flex-direction: column; gap: 6px; }
 .hero-meta .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
-.hero-meta .val { font-family: 'Fraunces', serif; font-size: clamp(24px, 3vw, 38px); font-weight: 500; }
+.hero-meta .val { font-family: 'Fraunces', serif; font-size: clamp(22px, 2.6vw, 34px); font-weight: 500; }
 
 .scroll-cue {
   display: flex;
@@ -194,7 +187,52 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
 }
 @keyframes slide { 0%,100% { transform: scaleX(0.3); transform-origin: left; } 50% { transform: scaleX(1); transform-origin: left; } }
 
-/* Section header */
+/* Critique block */
+.critique {
+  background: var(--ink);
+  color: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.critique-inner {
+  padding: clamp(80px, 10vw, 140px) 0;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
+}
+.critique .tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--coral); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
+.critique .name { font-family: 'Fraunces', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 500; margin-bottom: 10px; }
+.critique .role { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: oklch(75% 0.01 70); text-transform: uppercase; letter-spacing: 0.1em; }
+.critique blockquote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 2.5vw, 36px);
+  line-height: 1.25;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: oklch(90% 0.01 70);
+  border-left: 2px solid var(--coral);
+  padding-left: clamp(20px, 3vw, 40px);
+}
+.critique blockquote em { color: var(--coral); font-weight: 900; font-style: italic; }
+.critique .shift {
+  margin-top: clamp(40px, 6vw, 80px);
+  padding-top: 40px;
+  border-top: 1px solid oklch(30% 0.02 60);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(30px, 4vw, 60px);
+}
+.critique .shift h4 { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--coral); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
+.critique .shift p { font-family: 'Fraunces', serif; font-size: clamp(18px, 1.5vw, 22px); font-weight: 400; line-height: 1.4; color: oklch(88% 0.01 70); }
+.critique .shift p s { color: oklch(55% 0.01 70); text-decoration-color: var(--coral); }
+
+@media (max-width: 900px) {
+  .critique-inner { grid-template-columns: 1fr; }
+  .critique .shift { grid-template-columns: 1fr; }
+}
+
 .section-header {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -227,45 +265,37 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   margin-top: 20px;
 }
 
-/* Market stats */
-.stats-grid {
+/* Principles block */
+.principles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background: var(--line);
   border: 1px solid var(--line);
 }
-.stat {
+.principle {
   background: var(--bg);
-  padding: clamp(30px, 4vw, 50px);
+  padding: clamp(30px, 3.5vw, 50px);
+  min-height: 260px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-height: 240px;
   justify-content: space-between;
-  position: relative;
-  overflow: hidden;
   transition: background .4s;
 }
-.stat:hover { background: var(--bg-2); }
-.stat .num {
+.principle:hover { background: var(--bg-2); }
+.principle .n {
   font-family: 'Fraunces', serif;
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 500;
+  font-size: clamp(50px, 6vw, 80px);
+  font-weight: 900;
+  font-style: italic;
   line-height: 0.9;
-  font-variation-settings: "opsz" 144;
-  letter-spacing: -0.04em;
+  color: var(--coral);
+  margin-bottom: 20px;
 }
-.stat .num .accent { color: var(--coral); font-style: italic; font-weight: 900; }
-.stat .label { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
-.stat .src {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-}
+.principle h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.15; margin-bottom: 14px; }
+.principle p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+
+@media (max-width: 900px) { .principles { grid-template-columns: 1fr; } }
 
 /* Pains */
 .pains-bg {
@@ -273,7 +303,7 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.08;
+  opacity: 0.1;
   z-index: -1;
   mask-image: radial-gradient(circle at 80% 30%, black, transparent 70%);
 }
@@ -289,36 +319,21 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   padding: clamp(24px, 3vw, 36px);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   min-height: 200px;
   position: relative;
   transition: background .35s;
 }
 .pain:hover { background: oklch(88% 0.03 75); }
-.pain .idx {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--coral);
-}
-.pain h3 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: clamp(15px, 1.1vw, 17px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
+.pain .idx { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--coral); }
+.pain .felt { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--teal); text-transform: uppercase; }
+.pain h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.3; letter-spacing: -0.01em; }
+.pain .quote { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--ink); line-height: 1.45; border-left: 2px solid var(--amber); padding-left: 10px; }
 .pain p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
-.pain a { color: var(--teal); text-decoration: none; border-bottom: 1px dashed var(--teal); }
-.pain a:hover { color: var(--coral); border-color: var(--coral); }
 
-/* Products — big marquee-style */
+/* Products */
 .products-section { background: var(--bg-2); }
-.products-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
+.products-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
 .product {
   border-top: 1px solid var(--ink);
   padding: clamp(30px, 5vw, 60px) 0;
@@ -331,10 +346,7 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   overflow: hidden;
 }
 .product:last-child { border-bottom: 1px solid var(--ink); }
-.product:hover {
-  background: var(--bg);
-  padding-left: clamp(20px, 3vw, 40px);
-}
+.product:hover { background: var(--bg); padding-left: clamp(20px, 3vw, 40px); }
 .product .p-num {
   font-family: 'Fraunces', serif;
   font-size: clamp(40px, 5vw, 72px);
@@ -365,15 +377,18 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-.product .p-body { display: flex; flex-direction: column; gap: 14px; color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
+.product .p-tag.works { border-color: var(--teal); color: var(--teal); }
+.product .p-body { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
 .product .p-body strong { color: var(--ink); font-weight: 600; }
-.product .p-body .vp {
+.product .p-body .quote {
   font-family: 'Fraunces', serif;
   font-style: italic;
-  font-size: clamp(16px, 1.3vw, 19px);
+  font-size: clamp(15px, 1.2vw, 18px);
   color: var(--ink);
   font-weight: 400;
   line-height: 1.4;
+  border-left: 2px solid var(--amber);
+  padding-left: 14px;
 }
 .product .p-price { display: flex; flex-direction: column; gap: 6px; text-align: right; }
 .product .p-price .big {
@@ -433,17 +448,10 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   position: relative;
   overflow: hidden;
 }
-.cta-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.2;
-  z-index: 0;
-}
+.cta-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.2; z-index: 0; }
 .cta-section .wrap { position: relative; z-index: 1; }
 .cta-section h2 {
-  font-size: clamp(48px, 8vw, 120px);
+  font-size: clamp(42px, 7vw, 100px);
   font-weight: 300;
   font-style: italic;
   line-height: 0.95;
@@ -451,12 +459,10 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
   margin-bottom: 40px;
 }
 .cta-section h2 em { color: var(--coral); font-weight: 900; }
-.cta-section p { font-size: clamp(17px, 1.5vw, 22px); color: oklch(85% 0.01 70); max-width: 720px; line-height: 1.45; margin-bottom: 50px; }
+.cta-section p { font-size: clamp(17px, 1.5vw, 22px); color: oklch(85% 0.01 70); max-width: 760px; line-height: 1.45; margin-bottom: 50px; }
 .cta-section .links { display: flex; gap: 20px; flex-wrap: wrap; }
 .cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+  display: inline-flex; align-items: center; gap: 14px;
   padding: 22px 36px;
   border: 1px solid oklch(70% 0.01 70);
   color: var(--bg);
@@ -481,28 +487,9 @@ nav .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: va
 .cta-btn:hover::before { transform: translateX(0); }
 .cta-btn:hover { border-color: var(--coral); color: var(--ink); }
 
-/* Sources */
-.sources-section { padding-top: 80px; padding-bottom: 80px; background: var(--bg-2); }
-.sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 40px; }
-.source-link {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  text-decoration: none;
-  color: var(--ink);
-  transition: all .3s;
-  gap: 6px;
-}
-.source-link:hover { border-color: var(--coral); transform: translateY(-2px); }
-.source-link .s-host { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
-.source-link .s-title { font-size: 14px; line-height: 1.35; }
-
-/* Footer */
 footer {
   background: var(--ink);
-  color: var(--bg);
+  color: oklch(75% 0.01 70);
   padding: 40px clamp(20px, 4vw, 60px);
   display: flex;
   justify-content: space-between;
@@ -512,20 +499,16 @@ footer {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: oklch(75% 0.01 70);
 }
 footer a { color: var(--coral); text-decoration: none; }
 
-/* Reveal */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
-/* Text row reveal */
 .row-mask { overflow: hidden; display: block; }
 .row-mask > span { display: inline-block; transform: translateY(110%); transition: transform 1s cubic-bezier(.2,.8,.2,1); }
 .row-mask.in > span { transform: translateY(0); }
 
-/* Media */
 @media (max-width: 900px) {
   .section-header { grid-template-columns: 1fr; }
   .hero-image { width: 100%; opacity: 0.1; }
@@ -537,7 +520,7 @@ footer a { color: var(--coral); text-decoration: none; }
 <div class="cursor" id="cursor"></div>
 
 <nav class="top" id="nav">
-  <div class="brand">TZ · <span style="color: var(--coral); font-style: italic;">Araştırma</span></div>
+  <div class="brand">TZ · <span style="color: var(--coral); font-style: italic;">Araştırma</span><span class="ver">v2</span></div>
   <div class="meta">Kaş × Kalkan · 2026</div>
 </nav>
 
@@ -547,186 +530,173 @@ footer a { color: var(--coral); text-decoration: none; }
   <div class="wrap">
     <div class="hero-label mono reveal">
       <span class="dot"></span>
-      <span>Otelciler için stratejik brief</span>
+      <span>v2 · Said'in eleştirisinden sonra</span>
       <span style="margin-left: auto; opacity:0.6;">Nisan 2026</span>
     </div>
     <h1>
-      <span class="row-mask"><span>Kaş &amp; Kalkan</span></span>
-      <span class="row-mask"><span>otelcileri için</span></span>
-      <span class="row-mask"><span><em>10 AI ürünü</em></span></span>
+      <span class="row-mask"><span><s>Booking'den kaç.</s></span></span>
+      <span class="row-mask"><span>Booking <em>kalacak</em>.</span></span>
+      <span class="row-mask"><span>Onu daha iyi <em>çalıştıracağız</em>.</span></span>
     </h1>
     <p class="hero-sub reveal">
-      Butik otel, pansiyon ve villa sahipleri için yeni gelir kanalları, operasyonel otomasyon ve
-      misafir deneyimi — Booking.com'un %15–25 komisyon eziyetinden çıkış yolu.
-      <strong style="color: var(--ink);">15 doğrulanmış sorun, 10 ürün, 3 öncelik.</strong>
+      Büyük sistemik değişiklikler yok. Otelcinin <strong style="color: var(--ink);">şu an hissettiği</strong> küçük,
+      elle tutulur sorunları çözen <strong style="color: var(--ink);">10 mikro-araç</strong> — hepsi Booking ile birlikte çalışır, karşısında değil.
     </p>
   </div>
   <div class="wrap hero-footer">
     <div class="hero-meta">
-      <div><span class="label">Pazar</span><span class="val">~2 000</span></div>
-      <div><span class="label">Pazar değeri</span><span class="val">ADR €172</span></div>
-      <div><span class="label">Sezon</span><span class="val">May – Eki</span></div>
+      <div><span class="label">Fiyat aralığı</span><span class="val">$29–149/ay</span></div>
+      <div><span class="label">Demo süresi</span><span class="val">≤ 20 dk</span></div>
+      <div><span class="label">Canlıya</span><span class="val">≤ 3 gün</span></div>
     </div>
     <div class="scroll-cue">Aşağı kaydır</div>
   </div>
 </section>
 
-<!-- MARKET -->
-<section id="market">
-  <div class="wrap">
-    <div class="section-header">
-      <div class="num">01 — Pazar</div>
-      <div>
-        <h2>İki şehir, <em>binlerce</em> konaklama.</h2>
-        <p class="desc">Kaş ve Kalkan — Antalya sahilinin iki bağımsız mikro-pazarı. Toplam erişilebilir pazar: 500–700 sahip, çoğu 10–40 odalı bağımsız işletme veya villa.</p>
-      </div>
+<!-- CRITIQUE — Said's feedback framed -->
+<section class="critique" id="critique">
+  <div class="wrap critique-inner">
+    <div class="reveal">
+      <div class="tag">Düzeltici geri bildirim</div>
+      <div class="name">Mehmet Said Gümüş</div>
+      <div class="role">Yerel gözlemci · Kaş</div>
     </div>
-    <div class="stats-grid">
-      <div class="stat reveal">
-        <div>
-          <div class="num">~<span class="accent">300+</span></div>
-          <div class="label">Butik otel ve pansiyon — Kaş + Kalkan</div>
+    <div>
+      <blockquote class="reveal">
+        "All of these make sense, but <em>none of them are major pain points</em>.
+        People won't be receptive to solutions for problems they don't actually feel.
+        We need to enter by first solving <em>smaller, tangible issues</em> they already care about.
+        Expecting them to move away from platforms like Booking is <em>unrealistic</em> —
+        many have tried and failed, leading to a kind of learned helplessness."
+      </blockquote>
+      <div class="shift">
+        <div class="reveal">
+          <h4>v1'de yanlıştık</h4>
+          <p><s>"Booking komisyonundan kurtul."</s><br>Büyük vaat. Kimse hissetmiyor. Denemişler, yenmişler.</p>
         </div>
-        <div class="src">Expedia · HotelsCombined 2024</div>
-      </div>
-      <div class="stat reveal">
-        <div>
-          <div class="num">~<span class="accent">800</span></div>
-          <div class="label">Ticari kiraya verilen villa, %85 yaz doluluğu</div>
+        <div class="reveal">
+          <h4>v2'de düzeltildi</h4>
+          <p>"Booking sıralamanı 5 puan yukarı çıkar. Bugün 2 saatini geri kazandır."<br><strong style="color: var(--coral);">Küçük. Elle tutulur. Bugün.</strong></p>
         </div>
-        <div class="src">Investropa · 2024</div>
-      </div>
-      <div class="stat reveal">
-        <div>
-          <div class="num">€<span class="accent">172</span></div>
-          <div class="label">Antalya bölgesi ADR (+%19 YoY), RevPAR €97</div>
-        </div>
-        <div class="src">Hürriyet · AGBI 2024</div>
-      </div>
-      <div class="stat reveal">
-        <div>
-          <div class="num"><span class="accent">%80</span></div>
-          <div class="label">Küçük otellerin Booking.com'a bağımlılığı</div>
-        </div>
-        <div class="src">Travel Weekly · Hotrec 2024</div>
-      </div>
-      <div class="stat reveal">
-        <div>
-          <div class="num"><span class="accent">%15</span>–25</div>
-          <div class="label">OTA komisyonu — marjı öldüren oran</div>
-        </div>
-        <div class="src">Modern Hospitality Solutions</div>
-      </div>
-      <div class="stat reveal">
-        <div>
-          <div class="num"><span class="accent">%60–70</span></div>
-          <div class="label">Kalkan misafirlerinin İngilizce konuştuğu oran — "British colony"</div>
-        </div>
-        <div class="src">Investropa · Tripadvisor</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PAINS -->
+<!-- PRINCIPLES -->
+<section id="principles">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="num">01 — Yeni çerçeve</div>
+      <div>
+        <h2>Üç <em>prensip</em>.</h2>
+        <p class="desc">Bütün ürünler bu üç kurala uyar. Uymayan fikir — atıldı.</p>
+      </div>
+    </div>
+    <div class="principles">
+      <div class="principle reveal">
+        <div class="n">01</div>
+        <h3>Booking ile birlikte, karşısında değil.</h3>
+        <p>Hiçbir araç "Booking'den kaç" diye başlamaz. Her araç ya Booking'deki performansı artırır, ya Booking ile eş zamanlı çalışır.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="n">02</div>
+        <h3>Küçük, elle tutulur, bugün görünür.</h3>
+        <p>"2 saat kazandırdı", "sıralama 12→8 çıktı", "3 kötü yorum 5 dakikada yanıtlandı" — ölçülebilir mikro-galibiyet. Vaat değil, tespit.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="n">03</div>
+        <h3>Otelcinin kendi kelimeleriyle.</h3>
+        <p>Her ürün, otelcinin zaten şikayet ettiği cümleyi çözer. "İngilizce bilmiyorum ama İngiliz misafir var." "Yorumları yanıtlamaya vaktim yok." — bunlar zaten duyulan sözler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINS — small tangible, quoted in their own words -->
 <section id="pains" style="position: relative;">
   <div class="pains-bg" style="background-image: url('images/pain.jpg');"></div>
   <div class="wrap">
     <div class="section-header">
-      <div class="num">02 — 15 somut sorun</div>
+      <div class="num">02 — Küçük, hissedilen sorunlar</div>
       <div>
-        <h2>Otelcinin <em>gerçek</em> acıları.</h2>
-        <p class="desc">Her biri doğrulanmış: sektör raporu, hukuki düzenleme veya açık pazar verisi. Her sorun — potansiyel bir ürünün temeli.</p>
+        <h2>Otelcinin <em>kendi</em> cümleleri.</h2>
+        <p class="desc">Her sorun — zaten söylenen bir söz. "Komisyon yüksek" (çoğu zaten kabullendi) değil, "bugün 2 saatim yandı" gibi günlük şikayetler.</p>
       </div>
     </div>
     <div class="pains-grid">
       <div class="pain reveal">
-        <span class="idx">/01</span>
-        <h3>Booking komisyonu marjı yiyor</h3>
-        <p>%15–25 her rezervasyondan gider. Küçük otellerin %80'i bu kanaldan geliyor. <a href="https://modern-hospitality-solutions.com/average-ota-commission" target="_blank">Kaynak</a></p>
+        <span class="idx">/01 · <span class="felt">günlük</span></span>
+        <h3>Yorum yanıtlamak 2 saat götürüyor</h3>
+        <div class="quote">"Her sabah Google, TripAdvisor, Booking açıyorum, 15 yorum birikmiş. Yanıtları ne yazacağımı bulmak bir saat, yazmak bir saat."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/02</span>
-        <h3>Misafir verileri gizleniyor</h3>
-        <p>Booking, e-posta ve telefonu paylaşmıyor — tekrar satış kampanyası imkansız. <a href="https://travelweekly.co.uk/news/hoteliers-accuse-booking-com-of-unfair-business-practices" target="_blank">Hotrec 2024</a></p>
+        <span class="idx">/02 · <span class="felt">haftalık</span></span>
+        <h3>Booking sıralamam düştü — sebep belirsiz</h3>
+        <div class="quote">"Dün 8'inci sıradaydım, bugün 15. Ne değişti bilmiyorum. Komşu fiyat mı indirdi? Yorumum mu eksildi?"</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/03</span>
-        <h3>Parity clauses</h3>
-        <p>Kendi sitenizde daha düşük fiyat veremezsiniz — doğrudan kanal ekonomisi bozuluyor.</p>
+        <span class="idx">/03 · <span class="felt">her misafir</span></span>
+        <h3>WhatsApp mesajları yetişemiyor</h3>
+        <div class="quote">"Check-in gününde 40 mesaj: 'Havaalanından nasıl gelinir?', 'Restoran önerisi?', 'Oda anahtarı nereden?'. Resepsiyon boğuluyor."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/04</span>
-        <h3>Tek kanal bağımlılığı</h3>
-        <p>Hesap bloğu veya DEX kesintisi işletme için varoluşsal risk oluşturuyor.</p>
+        <span class="idx">/04 · <span class="felt">ayın 26'sında</span></span>
+        <h3>Konaklama vergisi beyan korkusu</h3>
+        <div class="quote">"Her ay muhasebeci 'kaç gün kaldı?' diye soruyor. Unutursam ceza var. Booking'den çektiğim rapor yanlış, el ile düzeltmek lazım."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/05</span>
-        <h3>Konaklama vergisi %2 + aylık beyan</h3>
-        <p>Ağustos 2025'ten beri ayın 26'sına kadar e-Fatura kodu 0059 ile bildirim — küçük işletmeler için operasyonel kabus. <a href="https://www.capitaldenetim.com.tr/2024-88-kisa-sureli-konaklama-hizmetleri-icin-duzenlenen-faturalarda-konaklama-vergisi-ve-hangi-oranda-kdv-uygulanacagi-hk" target="_blank">Capital Denetim</a></p>
+        <span class="idx">/05 · <span class="felt">sezon boyu</span></span>
+        <h3>İngilizce zayıf, misafir İngiliz</h3>
+        <div class="quote">"Resepsiyonist 'yes' ve 'thank you' biliyor. Misafir bir paragraf soru soruyor, çevirmen kullanmak saatler alıyor."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/06</span>
-        <h3>Yabancı sahip + Türk muhasebesi</h3>
-        <p>Londra'da oturan villa sahibi, NDTS / foreigner registration / e-Arşiv arasında kayboluyor.</p>
+        <span class="idx">/06 · <span class="felt">anında</span></span>
+        <h3>1-yıldızlı yorumu geç görüyorum</h3>
+        <div class="quote">"Misafir ayrıldıktan 3 gün sonra fark ediyorum — kötü yorum 500 kişiye ulaşmış. Hemen görsem özel mesaj atardım."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/07</span>
-        <h3>Dil bariyeri</h3>
-        <p>Resepsiyon İngilizceyi zayıf biliyor, misafirin %60–70'i İngiliz. Her doğrudan iletişim kayıp gelir.</p>
+        <span class="idx">/07 · <span class="felt">check-in'de</span></span>
+        <h3>Check-in 30 dakika sürüyor</h3>
+        <div class="quote">"Kimlik, tarih, polis kaydı, oda anahtarı — her misafir yarım saat. 5 misafir gelirse akşamüstü 3 saat."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/08</span>
-        <h3>Sezonluk 5/12</h3>
-        <p>Yedi ay nakit akışı sıfır — kapalı olmayan maliyetler (kira, personel, kredi) sorun.</p>
+        <span class="idx">/08 · <span class="felt">her rezervasyon</span></span>
+        <h3>Misafire ne önereceğimi bilmiyorum</h3>
+        <div class="quote">"Her misafir 'iyi restoran?' diye soruyor. Ben aynı 3 ismi tekrarlıyorum. Komşu restoran bana komisyon verirdi — ama sistem yok."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/09</span>
-        <h3>Dinamik fiyatlandırma yok</h3>
-        <p>Sabit fiyat veya el ile ayar — komşunun fiyatına tepki yok. <a href="https://www.littlehotelier.com/blog/get-more-bookings/optimize-small-hotels-ota-profiles/" target="_blank">Little Hotelier</a></p>
+        <span class="idx">/09 · <span class="felt">aylık</span></span>
+        <h3>Booking fotoğraflarım 5 yaşında</h3>
+        <div class="quote">"Yeni fotoğraf çektim ama nasıl yükleyeceğimi, hangi sırada olmalı bilmiyorum. CTR ne diye soruyorum, kimse anlatmıyor."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/10</span>
-        <h3>Yorumlara yanıt vermek saat alıyor</h3>
-        <p>TripAdvisor + Google + Booking üç ayrı panel, üç dilde cevap gerekiyor.</p>
+        <span class="idx">/10 · <span class="felt">haftada 3x</span></span>
+        <h3>Aynı soruya 40 kere cevap verdim</h3>
+        <div class="quote">"'Havuz var mı?', 'Kahvaltı saat kaçta?', 'Plaj ne kadar uzakta?' — her misafire aynı. Tek bir yerde olsa okurdu."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/11</span>
-        <h3>Instagram / TikTok — kaynak yok</h3>
-        <p>Sahip veya resepsiyonist tutarlı içerik üretemiyor. <a href="https://www.littlehotelier.com/blog/get-more-bookings/instagram-hotel-marketing/" target="_blank">Kaynak</a></p>
+        <span class="idx">/11 · <span class="felt">haftalık</span></span>
+        <h3>Rakiplerin fiyatını elde takip ediyorum</h3>
+        <div class="quote">"Her Pazartesi 10 komşu otelin Booking fiyatını tek tek yazıyorum Excel'e. Bir saat gidiyor, iki gün sonra eskimiş oluyor."</div>
       </div>
       <div class="pain reveal">
-        <span class="idx">/12</span>
-        <h3>Türk lirası oynaklığı</h3>
-        <p>Booking'de € girilir, TL alınır — gerçek gelir ±%15 haftada sallanır.</p>
-      </div>
-      <div class="pain reveal">
-        <span class="idx">/13</span>
-        <h3>WhatsApp mesaj yığını</h3>
-        <p>Yazın günde 20–50 mesaj: "restoran önerisi?", "transfer?", "plaj nasıl?" — resepsiyon boğuluyor.</p>
-      </div>
-      <div class="pain reveal">
-        <span class="idx">/14</span>
-        <h3>Booking fotoğraf kalitesi düşük</h3>
-        <p>Kötü fotoğraflar dönüşüm oranını doğrudan düşürüyor (SiteMinder veri).</p>
-      </div>
-      <div class="pain reveal">
-        <span class="idx">/15</span>
-        <h3>Rakip analizi el ile</h3>
-        <p>2 haftada bir 1–2 saat Booking taraması — sistematik değil, geç tepki.</p>
+        <span class="idx">/12 · <span class="felt">her seferinde</span></span>
+        <h3>Airbnb + Booking + sitem — 3 farklı takvim</h3>
+        <div class="quote">"Bir misafir Airbnb'den rezervasyon yapıyor, ben Booking'i kapatmayı unutuyorum, çifte rezervasyon. Utanç verici."</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<!-- PRODUCTS — small, tangible, Booking-friendly -->
 <section class="products-section" id="products">
   <div class="wrap">
     <div class="section-header">
-      <div class="num">03 — 10 ürün fikri</div>
+      <div class="num">03 — 10 mikro-araç</div>
       <div>
-        <h2><em>10</em> farklı yol, bir hedef: doğrudan gelir.</h2>
-        <p class="desc">Her ürün somut bir sorunu çözer, bir gelir modeline bağlıdır ve iki haftada canlıya alınabilir. Fiyatlar — ilk müşteri için indikatif.</p>
+        <h2><em>10</em> küçük araç, her biri bir cümleye cevap.</h2>
+        <p class="desc">Fiyatlar düşük çünkü problemler küçük. Bir ay dene, çalışmazsa bırak. Her araç 3 gün içinde canlıda.</p>
       </div>
     </div>
 
@@ -735,194 +705,205 @@ footer a { color: var(--coral); text-decoration: none; }
       <article class="product reveal">
         <div class="p-num">01</div>
         <div class="p-meta">
-          <div class="p-name"><em>KaşDirect</em><br>Doğrudan rezervasyon</div>
-          <span class="p-tag">Komisyon geri kazan</span>
+          <div class="p-name"><em>Yorum</em>Yanıtlayıcı</div>
+          <span class="p-tag works">Booking ile birlikte</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Booking'e ödediğin %15–20'yi 2 haftada kendi siten üzerinden geri al."</div>
-          <div><strong>Sorun:</strong> #1, #2, #4. <strong>Nasıl:</strong> Responsive site + Cloudbeds/SiteMinder booking engine + GPT destekli 5 dilli (TR/EN/RU/DE/FR) chatbot.</div>
-          <div><strong>Model:</strong> Setup + aylık abonelik. <strong>Neden satar:</strong> İngiliz villa sahipleri "Kalkan villa direct" diye Google'lıyor — bu trafiği yakalıyoruz.</div>
+          <div class="quote">"Yorumlara yanıt yazmak 2 saat götürüyor."</div>
+          <div><strong>Ne yapıyor:</strong> Google, Booking, TripAdvisor yorumlarını tek panelde topluyor. AI, senin geçmiş yanıtlarının tonunda taslak hazırlıyor. Sen onaylıyorsun, 30 saniyede gidiyor.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> haftada 10–14 saat geri geliyor.</div>
         </div>
-        <div class="p-price"><span class="big">$2 500</span><span class="small">kurulum</span><span class="big" style="font-size: 18px;">$299/ay</span><span class="small">aylık</span></div>
+        <div class="p-price"><span class="big">$79/ay</span><span class="small">deneme: 1 ay ücretsiz</span></div>
       </article>
 
       <!-- 2 -->
       <article class="product reveal">
         <div class="p-num">02</div>
         <div class="p-meta">
-          <div class="p-name"><em>PriceRadar</em><br>Dinamik fiyat AI</div>
-          <span class="p-tag">Revenue +12–18%</span>
+          <div class="p-name"><em>Booking</em>Rank İzleyici</div>
+          <span class="p-tag works">Booking ile birlikte</span>
         </div>
         <div class="p-body">
-          <div class="vp">"RevPAR'ını %12–18 artır — revenue manager tutmadan."</div>
-          <div><strong>Sorun:</strong> #9, #15. <strong>Nasıl:</strong> Her gün Booking rakiplerini scrape eder + PMS doluluk verisini ML modeliyle birleştirir → WhatsApp/e-posta ile fiyat önerisi.</div>
-          <div><strong>Model:</strong> Aylık + performansa bağlı pay. <strong>Neden Kalkan:</strong> 50–80 rakipli dar pazar, modelin eğitimi ideal.</div>
+          <div class="quote">"Sıralamam neden düştü, bilmiyorum."</div>
+          <div><strong>Ne yapıyor:</strong> Her sabah 08:00'de WhatsApp'a mesaj: <em>"Sıralaman 12→18 düştü. Komşu X €10 indirdi. Yeni 4-yıldız yorumun var."</em> Tek cümle — ne olduğunu görüyorsun.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> tepki 3 gün yerine 1 saatte.</div>
         </div>
-        <div class="p-price"><span class="big">$199/ay</span><span class="small">+ %3 uplift</span></div>
+        <div class="p-price"><span class="big">$29/ay</span><span class="small">impulse-buy fiyat</span></div>
       </article>
 
       <!-- 3 -->
       <article class="product reveal">
         <div class="p-num">03</div>
         <div class="p-meta">
-          <div class="p-name"><em>ReputationVoice</em><br>Yorum yanıt AI</div>
-          <span class="p-tag">30 saniye / yanıt</span>
+          <div class="p-name"><em>WhatsApp</em>Yardımcı</div>
+          <span class="p-tag">Resepsiyon için</span>
         </div>
         <div class="p-body">
-          <div class="vp">"TripAdvisor, Google, Booking — hepsi sahibinin tonunda, 30 saniyede."</div>
-          <div><strong>Sorun:</strong> #10, #7. <strong>Nasıl:</strong> API entegrasyonu + geçmiş yanıtlar üzerine fine-tune edilmiş GPT + Telegram onay kuyruğu.</div>
-          <div><strong>Model:</strong> Hacim bazlı abonelik. Demo 20 dakika, canlıya 3 gün. Diğer ürünlere giriş kapısı.</div>
+          <div class="quote">"Aynı 10 soruya 40 kere cevap verdim bu hafta."</div>
+          <div><strong>Ne yapıyor:</strong> Misafirin WhatsApp mesajı geldiğinde — AI, otelinin bilgi tabanından (kahvaltı, plaj, Wi-Fi, transfer) tek cümle taslak öneriyor. Resepsiyonist onay tuşuna basıyor.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> cevap süresi 8 dk → 15 sn.</div>
         </div>
-        <div class="p-price"><span class="big">$99–199</span><span class="small">/ay</span></div>
+        <div class="p-price"><span class="big">$69/ay</span><span class="small">3 dilli (TR/EN/RU)</span></div>
       </article>
 
       <!-- 4 -->
       <article class="product reveal">
         <div class="p-num">04</div>
         <div class="p-meta">
-          <div class="p-name"><em>Konaklama</em> Autopilot<br>Mevzuat botu</div>
-          <span class="p-tag">Compliance lock-in</span>
+          <div class="p-name"><em>Konaklama</em>Beyan Botu</div>
+          <span class="p-tag">Mevzuat — ceza riski</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Konaklama vergisi, e-Fatura, yabancı kaydı — hepsi otomatik."</div>
-          <div><strong>Sorun:</strong> #5, #6. <strong>Nasıl:</strong> GİB e-Fatura API + PMS → ayın 26'sından önce otomatik beyan oluşturma, muhasebeci için dışa aktarım.</div>
-          <div><strong>Model:</strong> Kurulum + aylık. <strong>Neden güçlü:</strong> Ceza riski gerçek, yasa taze — Londra'daki sahipler premium ödeyip uzak durmak istiyor.</div>
+          <div class="quote">"Ayın 26'sı geliyor, rapor hazır değil."</div>
+          <div><strong>Ne yapıyor:</strong> Booking gece raporunu otomatik çekiyor, konaklama vergisi beyanı PDF+XML oluşturuyor. 24'ünde hatırlatma, 25'inde muhasebeciye gönderiyor.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> ceza riski sıfıra iniyor, muhasebeci 1 saat az çalışıyor.</div>
         </div>
-        <div class="p-price"><span class="big">$149/ay</span><span class="small">+ $500 setup</span></div>
+        <div class="p-price"><span class="big">$99/ay</span><span class="small">+ 1 kez $150 kurulum</span></div>
       </article>
 
       <!-- 5 -->
       <article class="product reveal">
         <div class="p-num">05</div>
         <div class="p-meta">
-          <div class="p-name"><em>WhatsGuest</em><br>Concierge AI</div>
-          <span class="p-tag">Komisyon geliri</span>
+          <div class="p-name"><em>Düşük-Yıldız</em> Alarmı</div>
+          <span class="p-tag">Itibar koruma</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Misafir yazıyor — AI restoran, tekne, dalış öneriyor. Sen komisyon alıyorsun."</div>
-          <div><strong>Sorun:</strong> #13, upsell #8. <strong>Nasıl:</strong> WhatsApp Business API + GPT + Kaş/Kalkan yerel bilgi tabanı + partner affiliate komisyonları.</div>
-          <div><strong>Neden Kaş:</strong> Dalış başkenti, Kalkan = Kaputaş tekneleri — dev aktivite havuzu, gerçek komisyon kazancı.</div>
+          <div class="quote">"Kötü yorumu 3 gün sonra fark ettim."</div>
+          <div><strong>Ne yapıyor:</strong> 1-2 yıldızlı yorum geldiğinde 5 dakika içinde Telegram'a push. AI, özel mesaj taslağı hazırlıyor — misafire doğrudan ulaşıp durumu kurtarma şansı veriyor.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> yorum silme/güncelleme oranı %15–30.</div>
         </div>
-        <div class="p-price"><span class="big">$149/ay</span><span class="small">+ %10 satışlardan</span></div>
+        <div class="p-price"><span class="big">$29/ay</span><span class="small">en ucuz, en yüksek etki</span></div>
       </article>
 
       <!-- 6 -->
       <article class="product reveal">
         <div class="p-num">06</div>
         <div class="p-meta">
-          <div class="p-name"><em>UpsellEngine</em><br>Ön-geliş satış</div>
-          <span class="p-tag">+€40–80 / misafir</span>
+          <div class="p-name"><em>Ön-Check-in</em> Formu</div>
+          <span class="p-tag">Zaman kazandırıcı</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Rezervasyon sonrası otomatik: transfer, akşam yemeği, sunset cruise."</div>
-          <div><strong>Sorun:</strong> #8, #12. <strong>Nasıl:</strong> Rezervasyondan sonra WhatsApp/e-posta dizisi + yerel partnerlerden kişiselleştirilmiş teklifler.</div>
-          <div><strong>Model:</strong> Düşük abonelik + işlem payı. Sezon öncesi cash-flow tamponu.</div>
+          <div class="quote">"Her check-in 30 dakika."</div>
+          <div><strong>Ne yapıyor:</strong> Rezervasyon sonrası misafire WhatsApp/email: kimlik fotoğrafı, varış saati, oda tercihi. Veri PMS'e akıyor, misafir geldiğinde 5 dakikada halledilir.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> check-in 30 → 5 dakika.</div>
         </div>
-        <div class="p-price"><span class="big">$99/ay</span><span class="small">+ %15 satışlardan</span></div>
+        <div class="p-price"><span class="big">$49/ay</span><span class="small">check-in başına ~25 dk</span></div>
       </article>
 
       <!-- 7 -->
       <article class="product reveal">
         <div class="p-num">07</div>
         <div class="p-meta">
-          <div class="p-name"><em>VillaContent</em> Factory<br>Instagram + TikTok</div>
-          <span class="p-tag">30 post / ay</span>
+          <div class="p-name"><em>Misafir</em> SSS Linki</div>
+          <span class="p-tag">Resepsiyon yükü azaltıcı</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Fotoğraflarından 30 post — EN/TR/RU 3 dilde AI-copy."</div>
-          <div><strong>Sorun:</strong> #11. <strong>Nasıl:</strong> Ayda 1 gün yerinde çekim + içerik takvimi + otomatik planlayıcı.</div>
-          <div><strong>Neden Kalkan:</strong> Villa pazarının %85 doluluğu Instagram-referans üzerinden. Sahaya gelebilen operatör farkı yaratır.</div>
+          <div class="quote">"Aynı 10 soruya haftada 40 kere cevap."</div>
+          <div><strong>Ne yapıyor:</strong> Otel için tek sayfa — kahvaltı saati, Wi-Fi, plaj, taksi, yakın restoran. Link rezervasyon onayına ekleniyor. Misafir okur, sormaz.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> WhatsApp mesaj sayısı %40 düşüyor.</div>
         </div>
-        <div class="p-price"><span class="big">$399/ay</span><span class="small">+ $800 çekim günü</span></div>
+        <div class="p-price"><span class="big">$39/ay</span><span class="small">+ $200 kurulum (3 dil)</span></div>
       </article>
 
       <!-- 8 -->
       <article class="product reveal">
         <div class="p-num">08</div>
         <div class="p-meta">
-          <div class="p-name"><em>KaşAds</em><br>Google Ads concierge</div>
-          <span class="p-tag">€1 000–3 000 / ay direkt</span>
+          <div class="p-name"><em>Restoran</em> Öneri Cebi</div>
+          <span class="p-tag">Komisyon geliri</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Doğrudan rezervasyonlar — kampanyaları biz yönetiriz."</div>
-          <div><strong>Sorun:</strong> #1, #4. <strong>Nasıl:</strong> "Kalkan villa", "Kaş boutique hotel" için 3 dilli kampanya + retargeting + landing page.</div>
-          <div><strong>Fırsat:</strong> Düşük rekabet keyword havuzu, yüksek satın alma niyeti.</div>
+          <div class="quote">"Misafir 'iyi restoran?' diyor. Komisyon sistemi yok."</div>
+          <div><strong>Ne yapıyor:</strong> Kaş/Kalkan'da 30 seçili restoran+tekne+dalış merkezi ile komisyonlu anlaşma. Misafire WhatsApp linki gönderiyorsun, rezervasyon yapıyor, sen komisyon alıyorsun (%10–15).</div>
+          <div><strong>Ölçülebilir kazanç:</strong> misafir başına €15–30 ek gelir.</div>
         </div>
-        <div class="p-price"><span class="big">$299/ay</span><span class="small">+ %15 ad spend</span></div>
+        <div class="p-price"><span class="big">$0 abonelik</span><span class="small">%30 komisyondan pay</span></div>
       </article>
 
       <!-- 9 -->
       <article class="product reveal">
         <div class="p-num">09</div>
         <div class="p-meta">
-          <div class="p-name"><em>GuestCRM</em> Revival<br>Tekrar rezervasyon</div>
-          <span class="p-tag">Gizli gelir</span>
+          <div class="p-name"><em>Takvim</em> Senkronizatör</div>
+          <span class="p-tag">Çifte rezervasyon önleyici</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Geçmiş misafirinin %90'ı geri gelmedi — geri getiririz."</div>
-          <div><strong>Sorun:</strong> #2, #8. <strong>Nasıl:</strong> PMS + Gmail + kağıt registration cards OCR → temizlik → sezon başı WhatsApp/email kampanyası.</div>
-          <div><strong>Neden İngiliz villaları:</strong> Sahipler tekrar gelir, tabanı zaten var ama aktive edilmemiş.</div>
+          <div class="quote">"Airbnb'den rezervasyon aldım, Booking'i kapatmayı unuttum."</div>
+          <div><strong>Ne yapıyor:</strong> Airbnb + Booking + kendi sitesi — üçü tek takvimde. Bir yerden rezervasyon geldiğinde diğer ikisi 60 saniyede kapanıyor.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> çifte rezervasyon utancı sıfır.</div>
         </div>
-        <div class="p-price"><span class="big">$149/ay</span><span class="small">+ $1 500 setup + €5 / dönen misafir</span></div>
+        <div class="p-price"><span class="big">$59/ay</span><span class="small">2 platform dahil</span></div>
       </article>
 
       <!-- 10 -->
       <article class="product reveal">
         <div class="p-num">10</div>
         <div class="p-meta">
-          <div class="p-name"><em>PhotoAI</em> + CompetitorWatch<br>Giriş paketi</div>
-          <span class="p-tag">Trojan horse</span>
+          <div class="p-name"><em>Booking</em> Fotoğraf Yenileyici</div>
+          <span class="p-tag works">Booking ile birlikte</span>
         </div>
         <div class="p-body">
-          <div class="vp">"Booking fotoğraflarını yenile (+%12 CTR) + her hafta komşuların ne yaptığını gör."</div>
-          <div><strong>Sorun:</strong> #14, #15. <strong>Nasıl:</strong> AI upscale/relight + 500m yarıçapındaki top-10 komşu için haftalık fiyat/müsaitlik/yorum raporu.</div>
-          <div><strong>Rol:</strong> Düşük fiyatlı giriş ürünü — diğer ürünleri upsell etmek için ideal.</div>
+          <div class="quote">"Fotoğraflarım eski, nasıl yükleneceğini bilmiyorum."</div>
+          <div><strong>Ne yapıyor:</strong> Mevcut fotoğrafları AI ile canlandırıyor (ışık, netlik, renk). Booking'e optimal sıra ve açıklama ile yüklüyor. Öncesi/sonrası CTR raporu gönderiyor.</div>
+          <div><strong>Ölçülebilir kazanç:</strong> Booking CTR +8–15%.</div>
         </div>
-        <div class="p-price"><span class="big">$79/ay</span><span class="small">+ $600 setup</span></div>
+        <div class="p-price"><span class="big">$199</span><span class="small">tek seferlik · sonuç 2 haftada</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- TOP 3 -->
+<!-- INSIGHT IMAGE BREAK -->
+<section style="padding: 0; height: clamp(280px, 40vh, 500px); position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('images/insight.jpg'); background-size: cover; background-position: center; filter: contrast(1.05) saturate(0.95);"></div>
+  <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, transparent 40%, transparent 60%, var(--bg) 100%); pointer-events: none;"></div>
+</section>
+
+<!-- TOP 3 — new rankings based on smallest/fastest -->
 <section id="top3">
   <div class="wrap">
     <div class="section-header">
-      <div class="num">04 — Tim'in önceliği</div>
+      <div class="num">04 — İlk üç giriş kapısı</div>
       <div>
-        <h2>Hangi <em>üç ürün</em> ilk gün satılır?</h2>
-        <p class="desc">Tim Kaş'ta yaşıyor, tek başına çalışıyor. Hızlı satılan, hızlı teslim edilen üç ürün — ilk 60 günde $5 000 MRR hedefi.</p>
+        <h2>Hangi <em>üç</em> araç — ilk gün?</h2>
+        <p class="desc">En küçük, en hızlı, en ölçülebilir. Güven kurmak için başlangıç — sonra bundle'a geçiş.</p>
       </div>
     </div>
     <div class="top3">
       <div class="top3-card reveal">
         <div>
           <div class="top3-rank">01</div>
-          <div class="top3-name">VillaContent Factory</div>
-          <div class="top3-why">Pipeline hazır (СБОРКА, Lisa projelerinden). Kalkan villa pazarı — en zengin segment, $400/ay ödemeye hazır. Kaş'ta yerel bulunmak rekabet avantajı.</div>
+          <div class="top3-name">Düşük-Yıldız Alarmı<br><span style="font-size: 0.5em; color: var(--coral);">$29/ay</span></div>
+          <div class="top3-why">En ucuz, en tartışılmaz fayda. "Kötü yorumu 5 dakikada gör" — kimse itiraz edemez. İmpulse-buy fiyat, telefon görüşmesinde satılır.</div>
         </div>
-        <div class="top3-num">Hedef: 5 müşteri × $400 = $2 000 MRR</div>
+        <div class="top3-num">Demo: 10 dk · Canlıya: 1 gün</div>
       </div>
       <div class="top3-card reveal">
         <div>
           <div class="top3-rank">02</div>
-          <div class="top3-name">ReputationVoice</div>
-          <div class="top3-why">Minimum teknik karmaşıklık. Impulse-buy fiyat. 20 dakikada demo. Her büyüklükteki otele satılabilir. Diğer ürünler için kapı.</div>
+          <div class="top3-name">BookingRank İzleyici<br><span style="font-size: 0.5em; color: var(--coral);">$29/ay</span></div>
+          <div class="top3-why">Her otelci sıralamasını takıntı haline getirmiş. Sabah 08:00'de WhatsApp mesajı — görünür değer. Booking'e karşı değil, Booking'in içinde.</div>
         </div>
-        <div class="top3-num">Döngü: 1 telefon · Canlıya: 3 gün</div>
+        <div class="top3-num">Demo: 15 dk · Canlıya: 2 gün</div>
       </div>
       <div class="top3-card reveal">
         <div>
           <div class="top3-rank">03</div>
-          <div class="top3-name">Konaklama Autopilot</div>
-          <div class="top3-why">Son tarihli engelleyici sorun — aylık beyan 26'sında. Ceza gerçek. Uzakta yaşayan İngiliz villa sahipleri premium ödüyor. Compliance lock-in — en defansif ürün.</div>
+          <div class="top3-name">YorumYanıtlayıcı<br><span style="font-size: 0.5em; color: var(--coral);">$79/ay</span></div>
+          <div class="top3-why">Haftada 10+ saat geri getiriyor — en büyük elle tutulur tasarruf. 20 dakikalık demo ile satılır. İlk ay ücretsiz deneme.</div>
         </div>
-        <div class="top3-num">Pazar: ~200 İngiliz absentee owner</div>
+        <div class="top3-num">Demo: 20 dk · Canlıya: 3 gün</div>
       </div>
     </div>
-    <p style="margin-top: 60px; font-size: 15px; color: var(--ink-soft); max-width: 720px;">
-      <strong style="color: var(--ink);">GTM planı:</strong> İlk 40 hedef (20 Kalkan villa + 20 Kaş butik otel) + WhatsApp outreach (Tim şehirde yaşıyor — sosyal kanıt) + bundle teklifi <strong>"ReputationVoice + VillaContent Factory — $499/ay"</strong>. 60 günde $5 000 MRR hedefi.
-    </p>
+    <div style="margin-top: 60px; padding: 40px; background: var(--bg-2); border-left: 3px solid var(--coral); max-width: 900px;">
+      <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--coral); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;">Yeni GTM</h4>
+      <p style="font-family: 'Fraunces', serif; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; font-weight: 400;">
+        Giriş paketi — <strong style="color: var(--coral);">$29 Düşük-Yıldız Alarmı + $29 BookingRank = $58/ay</strong>.
+        İlk 30 gün $0. İkinci aydan sonra, müşteri güven kurduğunda — <em>YorumYanıtlayıcı</em> upsell ($79/ay).
+        Hedef: 20 müşteri × $137/ay = <strong>$2 740 MRR 90 günde</strong>. Booking'den kaçış vaadi yok.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -930,8 +911,8 @@ footer a { color: var(--coral); text-decoration: none; }
 <section class="cta-section">
   <div class="cta-bg" style="background-image: url('images/cta.jpg');"></div>
   <div class="wrap">
-    <h2>İlk <em>pilot</em> için<br>konuşalım.</h2>
-    <p>Eğer bu ürünlerden biri sizin otelinize oturuyorsa — 30 dakikalık bir sohbet, bir Loom demo ve ilk müşteri için $0 kurulum. İlk beş pilotu şahsen Kaş/Kalkan'da yürütüyorum.</p>
+    <h2>Bir <em>otel</em>.<br>On beş dakika.<br>Sıfır vaat.</h2>
+    <p>Senin otelinde 1 gün yanında geçiriyorum — sorunlarını kendi kelimelerinle duyuyorum. Hangi araç oturuyorsa, 3 gün içinde canlıya alıyorum. İlk ay $0. Çalışmazsa ayrılıyoruz.</p>
     <div class="links">
       <a class="cta-btn" href="https://t.me/timofeyzinin" target="_blank">Telegram <span style="margin-left: 8px;">→</span></a>
       <a class="cta-btn" href="mailto:ilove@timzinin.com">ilove@timzinin.com <span style="margin-left: 8px;">→</span></a>
@@ -940,41 +921,13 @@ footer a { color: var(--coral); text-decoration: none; }
   </div>
 </section>
 
-<!-- SOURCES -->
-<section class="sources-section">
-  <div class="wrap">
-    <div class="section-header">
-      <div class="num">05 — Kaynaklar</div>
-      <div>
-        <h2>Her sayı, <em>doğrulanabilir</em>.</h2>
-        <p class="desc">Tüm verilen istatistikler ve hukuki atıflar — açık kaynaklardan. İddiaların hiçbiri ezbere değil.</p>
-      </div>
-    </div>
-    <div class="sources-grid">
-      <a class="source-link" href="https://www.expedia.com/Kas-Hotels.d6047444.Travel-Guide-Hotels" target="_blank"><span class="s-host">expedia.com</span><span class="s-title">Kaş Travel Guide — konaklama envanteri</span></a>
-      <a class="source-link" href="https://www.hotelscombined.com/Place/Kalkan.htm" target="_blank"><span class="s-host">hotelscombined.com</span><span class="s-title">Kalkan — ~1 326 konaklama objesi</span></a>
-      <a class="source-link" href="https://www.tripadvisor.com/Tourism-g297964-Kalkan_Turkish_Mediterranean_Coast-Vacations.html" target="_blank"><span class="s-host">tripadvisor.com</span><span class="s-title">Kalkan Tourism — butik pazar profili</span></a>
-      <a class="source-link" href="https://www.hurriyetdailynews.com/hotel-prices-rise-most-in-antalya-last-year-190188" target="_blank"><span class="s-host">hurriyetdailynews.com</span><span class="s-title">Antalya otel fiyatları — ADR €172 (+%19 YoY)</span></a>
-      <a class="source-link" href="https://www.agbi.com/leisure-hospitality/2024/01/antalyas-hotel-rates-at-record-highs-across-turkey/" target="_blank"><span class="s-host">agbi.com</span><span class="s-title">Antalya Hotel Rates Record — RevPAR €97</span></a>
-      <a class="source-link" href="https://investropa.com/blogs/news/turkey-kalkan-kalkan-property-good-investment" target="_blank"><span class="s-host">investropa.com</span><span class="s-title">Kalkan Property — %85 yaz doluluğu, British colony</span></a>
-      <a class="source-link" href="https://travelweekly.co.uk/news/hoteliers-accuse-booking-com-of-unfair-business-practices" target="_blank"><span class="s-host">travelweekly.co.uk</span><span class="s-title">Hoteliers vs Booking.com — misafir verisi gizleme</span></a>
-      <a class="source-link" href="https://modern-hospitality-solutions.com/average-ota-commission" target="_blank"><span class="s-host">modern-hospitality-solutions.com</span><span class="s-title">OTA Commission Average — %15–25</span></a>
-      <a class="source-link" href="https://www.littlehotelier.com/blog/get-more-bookings/instagram-hotel-marketing/" target="_blank"><span class="s-host">littlehotelier.com</span><span class="s-title">Instagram Hotel Marketing — küçük otel gerçeği</span></a>
-      <a class="source-link" href="https://www.littlehotelier.com/blog/get-more-bookings/optimize-small-hotels-ota-profiles/" target="_blank"><span class="s-host">littlehotelier.com</span><span class="s-title">OTA Profile Optimization — fiyatlandırma kaybı</span></a>
-      <a class="source-link" href="https://www.capitaldenetim.com.tr/2024-88-kisa-sureli-konaklama-hizmetleri-icin-duzenlenen-faturalarda-konaklama-vergisi-ve-hangi-oranda-kdv-uygulanacagi-hk" target="_blank"><span class="s-host">capitaldenetim.com.tr</span><span class="s-title">Konaklama Vergisi 2024/88 — hukuki düzenleme</span></a>
-      <a class="source-link" href="https://www.uyumsoft.com/blog/konaklama-vergisi-nedir-nasil-hesaplanir" target="_blank"><span class="s-host">uyumsoft.com</span><span class="s-title">Konaklama Vergisi — hesaplama ve beyan</span></a>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div>Tim Zinin · Kaş, Antalya · <a href="https://timzinin.com" target="_blank">timzinin.com</a></div>
-  <div>Araştırma · Nisan 2026</div>
-  <div>Made in <span style="color: var(--coral);">Kaş</span> · Built with GSAP + Lenis</div>
+  <div>v2 · Said'in eleştirisinden sonra · Nisan 2026</div>
+  <div>Made in <span style="color: var(--coral);">Kaş</span> · GSAP + Lenis</div>
 </footer>
 
 <script>
-// Lenis smooth scroll
 const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
@@ -984,7 +937,6 @@ lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
-// Custom cursor
 const cursor = document.getElementById('cursor');
 let mx = 0, my = 0, cx = 0, cy = 0;
 window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
@@ -995,16 +947,14 @@ function cursorLoop() {
   requestAnimationFrame(cursorLoop);
 }
 cursorLoop();
-document.querySelectorAll('a, .product, .top3-card, .stat, .pain, .cta-btn, .source-link').forEach((el) => {
+document.querySelectorAll('a, .product, .top3-card, .principle, .pain, .cta-btn').forEach((el) => {
   el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
 
-// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
 
-// Hero text reveal on load
 window.addEventListener('load', () => {
   document.querySelectorAll('.hero .row-mask').forEach((r, i) => {
     setTimeout(() => r.classList.add('in'), 200 + i * 130);
@@ -1012,26 +962,19 @@ window.addEventListener('load', () => {
   setTimeout(() => document.querySelectorAll('.hero .reveal').forEach(r => r.classList.add('in')), 700);
 });
 
-// Reveal on scroll
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal, .row-mask').forEach((el) => io.observe(el));
 
-// Subtle parallax on hero image
 gsap.to('.hero-image', {
-  yPercent: 15,
-  ease: 'none',
+  yPercent: 15, ease: 'none',
   scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
 });
 
-// Products stagger on scroll
-gsap.utils.toArray('.product').forEach((p, i) => {
+gsap.utils.toArray('.product').forEach((p) => {
   gsap.fromTo(p, { opacity: 0, x: -30 }, {
     opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
     scrollTrigger: { trigger: p, start: 'top 85%', toggleActions: 'play none none reverse' }
