@@ -2,6 +2,7 @@ import { t, pick, getLocale, setLocale, LANG_LABELS, LANGS } from '../shared/i18
 import {
   USER, WIDGETS, ALERTS, VILLAS, BOOKINGS, CONFLICT,
   PRICING_WEEKS, TAX_THRESHOLDS, BOT_CONVOS, REVIEWS, ONBOARDING, NAV_MOBILE,
+  INTEG_STATS, INTEG_LOG,
   fmtDateRange, fmtTimeAgo, fmtNights
 } from '../shared/data.js';
 import { renderLangSwitcher, wireLangSwitchers } from '../shared/lang-switcher.js';
@@ -571,6 +572,23 @@ function renderMore(el) {
         </div>
       </div>
 
+      <div class="integ-card" onclick="toast(t_bookVisitM())">
+        <div class="integ-card-top">
+          <div class="integ-card-avatar">TZ</div>
+          <div>
+            <div class="integ-card-tag">${t('integ.who.title')}</div>
+            <div class="integ-card-n">${t('integ.who.name')}</div>
+          </div>
+        </div>
+        <div class="integ-card-line">${t('integ.who.role')}</div>
+        <div class="integ-card-stats">
+          <div><span class="v">${INTEG_STATS.platformsConnected}</span><span class="l">${t('integ.nav')}</span></div>
+          <div><span class="v">${INTEG_STATS.hoursUsed}h</span><span class="l">${t('integ.who.hoursUsed').toLowerCase()}</span></div>
+          <div><span class="v" style="font-size: 14px;">${t('integ.who.nextDate').split(' ')[0]} ${t('integ.who.nextDate').split(' ')[1] || ''}</span><span class="l">${t('integ.who.nextVisit').toLowerCase()}</span></div>
+        </div>
+        <div class="integ-card-quote">${t('integ.thesis').split('.')[0]}.</div>
+      </div>
+
       <div class="plan-card">
         <div class="lbl">${t('settings.plan.active')}</div>
         <div class="name">${t('settings.plan.name')}</div>
@@ -646,6 +664,8 @@ function maybeOnboard() {
   $('#skip').addEventListener('click', finish);
   $('#go').addEventListener('click', finish);
 }
+
+window.t_bookVisitM = () => getLocale() === 'ru' ? 'Отправлено · Тим подтвердит в течение часа' : getLocale() === 'en' ? 'Sent · Tim will confirm within an hour' : 'Gönderildi · Tim 1 saat içinde onaylayacak';
 
 if (new URLSearchParams(location.search).has('reset')) {
   localStorage.removeItem('kh-onboard-done');

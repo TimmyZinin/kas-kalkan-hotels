@@ -381,4 +381,114 @@ export const STRINGS = {
   'misc.platforms.all': { tr: '4 platform', en: '4 platforms', ru: '4 платформы' },
   'misc.lastSync': { tr: '34 sn', en: '34 s', ru: '34 с' },
   'misc.3diller': { tr: '3 dilli (TR/EN/RU)', en: '3 languages (TR/EN/RU)', ru: '3 языка (TR/EN/RU)' },
+
+  // --- INTEGRATOR MODEL (post-Said) ---
+  'integ.nav': { tr: 'Entegrasyonlar', en: 'Integrations', ru: 'Интеграции' },
+  'integ.banner.title': {
+    tr: 'Bu bir SaaS değil. <em>AI entegrasyonu.</em>',
+    en: 'This isn\'t SaaS. <em>An AI integration.</em>',
+    ru: 'Это не SaaS. <em>Это AI-интеграция.</em>',
+  },
+  'integ.banner.sub': {
+    tr: 'Yeni yazılım almıyorsun. Senin Booking, WhatsApp, Excel, Gmail — hepsi senin kalıyor. Biz aralarına Claude\'u bağlıyoruz. Fabrikaya prizini gösteren adamız, jeneratör satmıyoruz.',
+    en: 'No new software. Your Booking, WhatsApp, Excel, Gmail — all stay yours. We wire Claude between them. We\'re the one showing where the outlet is, not selling generators.',
+    ru: 'Новый софт не покупаешь. Твой Booking, WhatsApp, Excel, Gmail — остаются твоими. Мы встраиваем Claude между ними. Мы тот, кто показывает где розетка, а не продаёт генераторы.',
+  },
+  'integ.who.title': { tr: 'AI Entegratörün', en: 'Your AI integrator', ru: 'Твой AI-интегратор' },
+  'integ.who.name': { tr: 'Tim Zinin', en: 'Tim Zinin', ru: 'Тим Зинин' },
+  'integ.who.role': {
+    tr: 'Kaş\'ta oturur · haftalık ziyaret',
+    en: 'Based in Kaş · weekly visit',
+    ru: 'Живёт в Каше · еженедельный визит',
+  },
+  'integ.who.since': { tr: '14 Nisan\'dan beri', en: 'since April 14', ru: 'с 14 апреля' },
+  'integ.who.nextVisit': { tr: 'Sonraki ziyaret', en: 'Next visit', ru: 'Следующий визит' },
+  'integ.who.nextDate': { tr: '28 Nisan · 14:00', en: '28 April · 14:00', ru: '28 апреля · 14:00' },
+  'integ.who.retainer': { tr: 'Aylık danışmanlık', en: 'Monthly retainer', ru: 'Месячный ретейнер' },
+  'integ.who.hoursUsed': { tr: 'Bu ay kullanılan', en: 'Used this month', ru: 'Использовано в этом месяце' },
+  'integ.who.book': { tr: 'Müdahale iste', en: 'Request intervention', ru: 'Запросить вмешательство' },
+
+  // Integration map
+  'integ.map.title': { tr: 'Entegrasyon haritası', en: 'Integration map', ru: 'Карта интеграций' },
+  'integ.map.sub': {
+    tr: 'Senin araçların. Aralarına yerleştirilen AI.',
+    en: 'Your tools. AI wired between them.',
+    ru: 'Твои инструменты. AI встроен между ними.',
+  },
+  'integ.center.label': { tr: 'Claude orkestrası', en: 'Claude orchestrator', ru: 'Claude-оркестратор' },
+  'integ.center.meta': {
+    tr: 'Sonnet 4.6 · webhook tabanlı · loglu',
+    en: 'Sonnet 4.6 · webhook-based · logged',
+    ru: 'Sonnet 4.6 · на вебхуках · с логами',
+  },
+
+  'integ.sys.booking': { tr: 'Booking.com paneli', en: 'Booking.com panel', ru: 'Панель Booking.com' },
+  'integ.sys.booking.note': {
+    tr: 'Senin hesabın. 2 webhook kuruldu · rezervasyon + yorum.',
+    en: 'Your account. 2 webhooks set up · bookings + reviews.',
+    ru: 'Твой аккаунт. 2 вебхука · брони + отзывы.',
+  },
+  'integ.sys.airbnb': { tr: 'Airbnb host hesabı', en: 'Airbnb host account', ru: 'Аккаунт Airbnb-хоста' },
+  'integ.sys.airbnb.note': {
+    tr: 'Senin hesabın. iCal + 1 webhook.',
+    en: 'Your account. iCal + 1 webhook.',
+    ru: 'Твой аккаунт. iCal + 1 вебхук.',
+  },
+  'integ.sys.whatsapp': { tr: 'WhatsApp Business', en: 'WhatsApp Business', ru: 'WhatsApp Business' },
+  'integ.sys.whatsapp.note': {
+    tr: 'Senin telefon numaran. AI yanıtlayıcı bağlı.',
+    en: 'Your phone number. AI responder attached.',
+    ru: 'Твой номер телефона. AI-автоответчик подключён.',
+  },
+  'integ.sys.excel': { tr: 'Google Sheets (doluluk)', en: 'Google Sheets (occupancy)', ru: 'Google Sheets (заполняемость)' },
+  'integ.sys.excel.note': {
+    tr: 'Senin dosyan. AI satır ekliyor, okumuyorsun.',
+    en: 'Your file. AI appends rows, you don\'t read it.',
+    ru: 'Твой файл. AI добавляет строки, ты его не читаешь.',
+  },
+  'integ.sys.gmail': { tr: 'Gmail (misafir)', en: 'Gmail (guest)', ru: 'Gmail (гости)' },
+  'integ.sys.gmail.note': {
+    tr: 'Senin inbox. AI taslak hazırlıyor — sen onaylıyorsun.',
+    en: 'Your inbox. AI drafts — you approve.',
+    ru: 'Твой инбокс. AI делает черновик — ты одобряешь.',
+  },
+  'integ.sys.efatura': { tr: 'GİB e-Fatura', en: 'GİB e-Fatura', ru: 'GİB e-Fatura' },
+  'integ.sys.efatura.note': {
+    tr: 'Senin muhasebeci. AI sadece aylık KDV beyanını hazırlıyor.',
+    en: 'Your accountant. AI just preps monthly VAT declaration.',
+    ru: 'Твой бухгалтер. AI готовит только ежемесячную декларацию НДС.',
+  },
+
+  'integ.status.connected': { tr: '● bağlı', en: '● connected', ru: '● подключено' },
+  'integ.status.paused': { tr: '○ duraklatıldı', en: '○ paused', ru: '○ на паузе' },
+  'integ.status.notYet': { tr: '◌ kurulmadı', en: '◌ not yet', ru: '◌ не настроено' },
+
+  // Log entries
+  'integ.log.title': { tr: 'Son müdahaleler', en: 'Recent interventions', ru: 'Последние вмешательства' },
+  'integ.log.1': {
+    tr: '14 Nis · Booking webhook kuruldu · 1 saat 40 dk',
+    en: '14 Apr · Booking webhook wired · 1h 40m',
+    ru: '14 апр · Booking вебхук подключён · 1 ч 40 мин',
+  },
+  'integ.log.2': {
+    tr: '17 Nis · WhatsApp Business bağlandı · 2 saat',
+    en: '17 Apr · WhatsApp Business connected · 2h',
+    ru: '17 апр · WhatsApp Business подключён · 2 ч',
+  },
+  'integ.log.3': {
+    tr: '20 Nis · e-Fatura şablonu hazırlandı · 50 dk',
+    en: '20 Apr · e-Fatura template prepared · 50m',
+    ru: '20 апр · шаблон e-Fatura готов · 50 мин',
+  },
+  'integ.log.4': {
+    tr: '22 Nis · Haftalık fiyat prompt\'u ince ayarlandı · 35 dk',
+    en: '22 Apr · Weekly price prompt fine-tuned · 35m',
+    ru: '22 апр · настроен промпт для недельной цены · 35 мин',
+  },
+  'integ.thesis': {
+    tr: '«Elektrik devriminde kazananlar jeneratör mühendisleri değildi. Karanlık fabrikalara girip prizin yerini gösterenlerdi.»',
+    en: '"In the electricity revolution, winners weren\'t generator engineers. They were the ones who walked into dark factories and showed where the outlet is."',
+    ru: '«В электрической революции выиграли не инженеры генераторов. Выиграли те, кто в тёмных фабриках показывал где розетка.»',
+  },
+  'integ.thesis.by': { tr: '— Said Gümüş, Kaş gözlemcisi', en: '— Said Gümüş, Kaş observer', ru: '— Саид Гюмюш, наблюдатель из Каша' },
 };

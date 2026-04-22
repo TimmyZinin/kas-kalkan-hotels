@@ -2,6 +2,7 @@ import { t, pick, getLocale, setLocale } from '../shared/i18n.js';
 import {
   USER, WIDGETS, ALERTS, VILLAS, BOOKINGS, CONFLICT,
   PRICING_WEEKS, TAX_THRESHOLDS, BOT_CONVOS, REVIEWS, KPIS, NAV_WEB,
+  INTEGRATIONS, INTEG_LOG, INTEG_STATS,
   fmtDateRange, fmtDate, fmtTimeAgo, fmtNights
 } from '../shared/data.js';
 import { renderLangSwitcher, wireLangSwitchers } from '../shared/lang-switcher.js';
@@ -18,6 +19,7 @@ const ROUTES = {
   '/bot': renderBot,
   '/reviews': renderReviews,
   '/villas': renderVillas,
+  '/integrations': renderIntegrations,
   '/settings': renderSettings,
 };
 
@@ -54,10 +56,11 @@ function renderSidebar(activeRoute) {
     <div class="side-label">Menu</div>
     <nav class="side-nav">
       ${NAV_WEB.map(n => `
-        <a href="${n.route}" class="${activeRoute === n.route.slice(1) ? 'active' : ''}">
+        <a href="${n.route}" class="${activeRoute === n.route.slice(1) ? 'active' : ''} ${n.highlight ? 'highlight' : ''}">
           ${icon(n.icon)}
           <span>${t(n.labelKey)}</span>
           ${counts[n.route] ? `<span class="badge">${counts[n.route]}</span>` : ''}
+          ${n.highlight ? `<span class="pulse-dot"></span>` : ''}
         </a>
       `).join('')}
     </nav>
@@ -89,6 +92,8 @@ function renderOverview(el) {
           <div class="sub">${fmtDate(new Date().toISOString(), getLocale())} · ${t('home.summary')}</div>
         </div>
       </div>
+
+      ${integratorBanner()}
 
       <section class="kpi-grid stagger">
         ${KPIS.map((k, i) => `
@@ -163,6 +168,163 @@ function getGreet() {
   if (h < 12) return t('home.greet.morning');
   if (h < 18) return t('home.greet.day');
   return t('home.greet.evening');
+}
+
+// Integrator banner (above KPIs) — frames the product as AI integration service
+function integratorBanner() {
+  return `
+    <section class="integ-banner" onclick="location.hash='#/integrations'">
+      <div class="integ-b-left">
+        <div class="integ-b-tag">${t('integ.who.title')}</div>
+        <div class="integ-b-name">
+          <div class="integ-b-avatar">TZ</div>
+          <div>
+            <div class="integ-b-n">${t('integ.who.name')}</div>
+            <div class="integ-b-r">${t('integ.who.role')} · ${t('integ.who.since')}</div>
+          </div>
+        </div>
+      </div>
+      <div class="integ-b-mid">
+        <div class="integ-b-stat"><div class="v">${INTEG_STATS.platformsConnected}</div><div class="l">${t('integ.nav').toLowerCase()}</div></div>
+        <div class="integ-b-stat"><div class="v">${INTEG_STATS.hoursUsed}/${INTEG_STATS.hoursTotal}</div><div class="l">${t('integ.who.hoursUsed').toLowerCase()}</div></div>
+        <div class="integ-b-stat"><div class="v">${t('integ.who.nextDate')}</div><div class="l">${t('integ.who.nextVisit').toLowerCase()}</div></div>
+      </div>
+      <div class="integ-b-right">
+        <button class="btn coral" onclick="event.stopPropagation(); location.hash='#/integrations'">
+          ${t('integ.who.book')} →
+        </button>
+      </div>
+    </section>
+  `;
+}
+
+// === INTEGRATIONS PAGE ===
+function renderIntegrations(el) {
+  el.innerHTML = `
+    <div class="fade-in">
+      <div class="page-head">
+        <div>
+          <h1>${t('integ.banner.title')}</h1>
+          <div class="sub" style="max-width: 780px; margin-top: 8px;">${t('integ.banner.sub')}</div>
+        </div>
+      </div>
+
+      <div class="integ-layout">
+        <section class="card card-lg integ-map">
+          <div class="card-head">
+            <div class="card-title">${t('integ.map.title')}</div>
+            <span class="card-sub">${t('integ.map.sub')}</span>
+          </div>
+          ${integMapSVG()}
+        </section>
+
+        <aside class="integ-side">
+          <section class="card card-lg integ-who">
+            <div class="integ-avatar-big">TZ</div>
+            <div class="integ-who-name">${t('integ.who.name')}</div>
+            <div class="integ-who-role">${t('integ.who.role')}</div>
+            <div class="integ-who-rows">
+              <div class="row">
+                <span class="l">${t('integ.who.since')}</span>
+                <span class="v">14 Nis 2026</span>
+              </div>
+              <div class="row">
+                <span class="l">${t('integ.who.retainer')}</span>
+                <span class="v">$1 200/${t('common.month').toLowerCase()}</span>
+              </div>
+              <div class="row">
+                <span class="l">${t('integ.who.hoursUsed')}</span>
+                <span class="v">${INTEG_STATS.hoursUsed} / ${INTEG_STATS.hoursTotal} h</span>
+              </div>
+              <div class="row">
+                <span class="l">${t('integ.who.nextVisit')}</span>
+                <span class="v" style="color: var(--coral); font-weight: 600;">${t('integ.who.nextDate')}</span>
+              </div>
+            </div>
+            <button class="btn primary" style="width: 100%; justify-content: center; margin-top: 14px;" onclick="toast(t_bookVisit())">
+              ${t('integ.who.book')} →
+            </button>
+          </section>
+
+          <section class="card card-lg">
+            <div class="card-title" style="margin-bottom: 14px;">${t('integ.log.title')}</div>
+            <div class="integ-log">
+              ${INTEG_LOG.slice().reverse().map((lg, i) => `
+                <div class="integ-log-row">
+                  <div class="integ-log-dot"></div>
+                  <div class="integ-log-body">${t(lg.key)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <div class="integ-thesis">
+        <div class="integ-thesis-quote">${t('integ.thesis')}</div>
+        <div class="integ-thesis-by">${t('integ.thesis.by')}</div>
+      </div>
+    </div>
+  `;
+}
+window.t_bookVisit = () => getLocale() === 'ru' ? 'Отправлено · Тим подтвердит в течение часа' : getLocale() === 'en' ? 'Sent · Tim will confirm within an hour' : 'Gönderildi · Tim 1 saat içinde onaylayacak';
+
+// SVG map: central orb + 6 connected systems with labels
+function integMapSVG() {
+  const vw = 800, vh = 500, cx = 400, cy = 250, r = 60;
+  return `
+    <div class="integ-map-wrap">
+      <svg viewBox="0 0 ${vw} ${vh}" preserveAspectRatio="xMidYMid meet" class="integ-map-svg">
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="coreGrad">
+            <stop offset="0%" stop-color="oklch(75% 0.2 30)"/>
+            <stop offset="100%" stop-color="oklch(58% 0.2 30)"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Connection lines -->
+        ${INTEGRATIONS.map(s => {
+          const sx = (s.x / 100) * vw;
+          const sy = (s.y / 100) * vh;
+          const dx = sx - cx, dy = sy - cy;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          const ex = sx - (dx / d) * 60, ey = sy - (dy / d) * 38;
+          const midX = (cx + ex) / 2;
+          const midY = (cy + ey) / 2 - 20;
+          const dash = s.status === 'paused' ? '6 6' : '0';
+          const opacity = s.status === 'paused' ? 0.5 : 1;
+          return `<path d="M${cx + (dx/d)*r},${cy + (dy/d)*r} Q${midX},${midY} ${ex},${ey}" stroke="${s.color}" stroke-width="2" fill="none" stroke-dasharray="${dash}" opacity="${opacity}" class="integ-line"/>`;
+        }).join('')}
+
+        <!-- Central Claude orb -->
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#coreGrad)" filter="url(#glow)"/>
+        <circle cx="${cx}" cy="${cy}" r="${r - 6}" fill="oklch(18% 0.02 60)"/>
+        <text x="${cx}" y="${cy - 4}" text-anchor="middle" font-family="Fraunces, serif" font-weight="900" font-style="italic" font-size="20" fill="oklch(95% 0.01 70)">Claude</text>
+        <text x="${cx}" y="${cy + 16}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1.5" fill="oklch(75% 0.1 30)">${t('integ.center.meta').split('·')[0].trim().toUpperCase()}</text>
+
+        <!-- Connected systems as pills -->
+        ${INTEGRATIONS.map(s => {
+          const sx = (s.x / 100) * vw;
+          const sy = (s.y / 100) * vh;
+          const opacity = s.status === 'paused' ? 0.55 : 1;
+          return `
+            <g class="integ-node" opacity="${opacity}" style="cursor:pointer" data-sys="${s.id}">
+              <rect x="${sx - 110}" y="${sy - 38}" width="220" height="76" rx="12" fill="oklch(98% 0.01 80)" stroke="${s.color}" stroke-width="2"/>
+              <circle cx="${sx - 85}" cy="${sy}" r="10" fill="${s.color}"/>
+              <text x="${sx - 65}" y="${sy - 6}" font-family="Inter, sans-serif" font-weight="600" font-size="13" fill="oklch(18% 0.02 60)">${t(s.systemKey)}</text>
+              <text x="${sx - 65}" y="${sy + 10}" font-family="JetBrains Mono, monospace" font-size="9" fill="${s.color}" letter-spacing="1.2">${s.status === 'connected' ? t('integ.status.connected').toUpperCase() : s.status === 'paused' ? t('integ.status.paused').toUpperCase() : t('integ.status.notYet').toUpperCase()}</text>
+              <text x="${sx - 65}" y="${sy + 25}" font-family="Inter, sans-serif" font-size="10" fill="oklch(45% 0.015 60)">${t(s.noteKey).slice(0, 42)}${t(s.noteKey).length > 42 ? '…' : ''}</text>
+            </g>
+          `;
+        }).join('')}
+      </svg>
+      <div class="integ-map-caption">${t('integ.center.meta')}</div>
+    </div>
+  `;
 }
 
 // Sparkline SVG

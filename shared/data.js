@@ -167,8 +167,33 @@ export const NAV_WEB = [
   { id: 'bot', route: '#/bot', labelKey: 'web.nav.bot', icon: 'bot' },
   { id: 'reviews', route: '#/reviews', labelKey: 'web.nav.reviews', icon: 'star' },
   { id: 'villas', route: '#/villas', labelKey: 'web.nav.villas', icon: 'home' },
+  { id: 'integrations', route: '#/integrations', labelKey: 'integ.nav', icon: 'sparkle', highlight: true },
   { id: 'settings', route: '#/settings', labelKey: 'web.nav.settings', icon: 'settings' },
 ];
+
+// Integration systems — what's wired to what
+export const INTEGRATIONS = [
+  { id: 'booking', systemKey: 'integ.sys.booking', noteKey: 'integ.sys.booking.note', status: 'connected', color: 'oklch(48% 0.18 260)', x: 20, y: 25 },
+  { id: 'airbnb', systemKey: 'integ.sys.airbnb', noteKey: 'integ.sys.airbnb.note', status: 'connected', color: 'oklch(62% 0.22 15)', x: 80, y: 25 },
+  { id: 'whatsapp', systemKey: 'integ.sys.whatsapp', noteKey: 'integ.sys.whatsapp.note', status: 'connected', color: 'oklch(62% 0.18 150)', x: 85, y: 55 },
+  { id: 'gmail', systemKey: 'integ.sys.gmail', noteKey: 'integ.sys.gmail.note', status: 'connected', color: 'oklch(60% 0.20 25)', x: 65, y: 82 },
+  { id: 'efatura', systemKey: 'integ.sys.efatura', noteKey: 'integ.sys.efatura.note', status: 'connected', color: 'oklch(55% 0.12 280)', x: 35, y: 82 },
+  { id: 'excel', systemKey: 'integ.sys.excel', noteKey: 'integ.sys.excel.note', status: 'paused', color: 'oklch(55% 0.12 150)', x: 15, y: 55 },
+];
+
+export const INTEG_LOG = [
+  { date: '2026-04-14', key: 'integ.log.1' },
+  { date: '2026-04-17', key: 'integ.log.2' },
+  { date: '2026-04-20', key: 'integ.log.3' },
+  { date: '2026-04-22', key: 'integ.log.4' },
+];
+
+export const INTEG_STATS = {
+  hoursUsed: 5.5,
+  hoursTotal: 8,
+  interventions: 4,
+  platformsConnected: 5,
+};
 
 // KPIs for web dashboard
 export const KPIS = [
