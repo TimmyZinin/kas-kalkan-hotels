@@ -1162,3 +1162,51 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 @supports (-webkit-touch-callout: none) {
   * { -webkit-tap-highlight-color: transparent; }
 }
+
+/* LANG SWITCHER (mobile) */
+.lang-switch { position: relative; display: inline-block; }
+.lang-btn {
+  height: 36px; padding: 0 10px;
+  border-radius: 10px;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--bg-2);
+  color: var(--ink-soft);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  transition: background .2s;
+  border: none;
+  cursor: pointer;
+}
+.lang-btn:hover, .lang-btn:active { background: var(--bg-3); color: var(--ink); }
+.lang-btn .lang-globe { display: grid; place-items: center; }
+.lang-btn .lang-globe svg { width: 14px; height: 14px; }
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 10px 30px -8px oklch(18% 0.02 60 / 0.2);
+  min-width: 170px;
+  z-index: 400;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.lang-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--ink);
+  background: none; border: none; cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background .2s;
+}
+.lang-opt:hover, .lang-opt.active { background: var(--bg-2); }
+.lang-opt .code { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--coral); font-weight: 700; min-width: 24px; }
+.lang-opt .full { flex: 1; font-size: 13px; }
+.lang-opt .tick { color: var(--coral); }
